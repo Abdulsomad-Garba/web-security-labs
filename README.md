@@ -15,12 +15,15 @@ The focus of this repository is to document practical findings from intentionall
 
 ### DVWA
 - [SQL Injection (Low & Medium Security Levels)](01-dvwa/sql-injection/)
+- [Brute Force Attack on Login Page](01-dvwa/brute-force/)
 
 ## Skills Demonstrated
 
 - Manual SQL Injection testing and exploitation
 - Bypassing basic input filtering/escaping
 - UNION-based data extraction
+- Brute force attacks using Burp Suite Intruder
+- Identification of broken authentication weaknesses
 - Technical documentation of security findings
 - Understanding of impact and remediation
 
