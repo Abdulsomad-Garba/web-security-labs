@@ -1,0 +1,49 @@
+## Portswigger - OS Command Injection
+
+## Overview
+- **Target**: OS Command Injection
+- **Severity**: Simple
+- **Goal**: Execute the 'whoami' command to determine the name of the current user 
+- **Date**: 12/10/2026
+
+## Environment/Setup
+  -Portswigger Web Security Academy lab running locally on Kali Linux
+  -Burp Suite for intercepting and modifying HTTP requests
+  -Browser: Firefox
+
+## Exploitation Step
+  1. Use Burp Suite to intercept a request that checks the stock level of a product.
+  2. in Burp Suite, modify the 'storeId' parameter by appending a command injection payload: 
+     storeid=1|whoami
+  3. Forward the modified request.
+  4. The application returns a response containing the name of the current user, confirming successful command injection.
+
+## Proof of Concept 
+  - Modification of the storeId parameter
+    In Burp Suite, the storeId parameter was modified as follows:
+    storeId=1|whoami
+  - Response containing the current username
+    After forwarding the request, the application returned the output of the whoami command:
+
+## Root Cause Analysis
+  1. **Missing or weak input validation** - The application trusts user-supplied input or relies on an incomplete that can be bypassed.
+  2. **Excess privileges** - The process runs with more permissions than necessary, increasing the potential impact of a successful injection.
+  3. **Mixing data and code** - Untrusted input is concatenated directly into a command string that is interpreted by a shell. As a result, the shell cannot distinguish between the intended command from attacker-controlled syntax.
+
+## Impact 
+A successful OS command  injection vulnerability can allow an attacker to:
+  - Read sensitive files(e.g.,configuration files, passwords, databases)
+  - Steal customer or application data
+  - Modify or delete files
+  - Potentially gain further access to the underlying system
+  
+
+## Remediation 
+  1. Avoid shell commands entirely
+  2. Validate against a strict allowlist(e.g: a hostname or IP pattern), not a blacklist.
+  3. Run with least privilege and sandbox the process.
+
+## Skills Demonstrated
+  - identification of OS Command Injection Vulnerability
+  - Burp Suite usage
+  - Ability to document findings clearly
