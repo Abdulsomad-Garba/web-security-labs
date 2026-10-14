@@ -19,11 +19,9 @@
   4. The application returns a response containing the name of the current user, confirming successful command injection.
 
 ## Proof of Concept 
-  - Modification of the storeId parameter
-    In Burp Suite, the storeId parameter was modified as follows:
-    storeId=1|whoami
-  - Response containing the current username
-    After forwarding the request, the application returned the output of the whoami command:
+   ![Sreenshot of storeId Modification](OS%20command%20Injection.%20modifying%20parameter.png)
+   ![Screenshot of response](OS%20command%20Injection.%20response.png)
+    
 
 ## Root Cause Analysis
   1. **Missing or weak input validation** - The application trusts user-supplied input or relies on an incomplete that can be bypassed.
