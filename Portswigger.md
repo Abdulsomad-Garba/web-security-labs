@@ -19,8 +19,8 @@
   4. The application returns a response containing the name of the current user, confirming successful command injection.
 
 ## Proof of Concept 
-   ![Sreenshot of storeId Modification](OS%20command%20Injection.%20modifying%20parameter.png)
-   ![Screenshot of response](OS%20command%20Injection.%20response.png)
+   [Sreenshot of storeId Modification](os-injection-parameter.png)
+   [Screenshot of response](os-injection-response.png)
     
 
 ## Root Cause Analysis
