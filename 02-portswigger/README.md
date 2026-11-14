@@ -1,4 +1,4 @@
-## Portswigger - OS Command Injection
+## PortSwigger - OS Command Injection
 
 ## Overview
 - **Target**: OS Command Injection
@@ -7,7 +7,7 @@
 - **Date**: 12/10/2026
 
 ## Environment/Setup
-  -Portswigger Web Security Academy lab running locally on Kali Linux
+  -PortSwigger Web Security Academy lab running locally on Kali Linux
   -Burp Suite for intercepting and modifying HTTP requests
   -Browser: Firefox
 
