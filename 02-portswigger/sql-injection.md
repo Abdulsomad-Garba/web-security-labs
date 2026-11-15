@@ -14,6 +14,13 @@ A payload was submitted to confirm that the parameter was vulnerable to injectio
 ' UNION SELECT NULL, 'abc'-- 
 ```
 
+<details>
+<summary>Screenshot 1: Confirming injection point (click to view)</summary>
+
+<img src="confirming-injection-point.png" alt="Confirming injection point" width="600">
+
+</details>
+
 The application returned the string abc in the response, confirming that the second column in the query's result set is rendered as text on the page.
 
 ### Step 2: Determine the Number of Columns
@@ -22,6 +29,13 @@ Using Burp Suite to intercept and modify the request, the number of NULL values 
 ```sql
 ' UNION SELECT NULL, NULL-- 
 ```
+<details>
+<summary>Screenshot 2: Column count (click to view)</summary>
+
+<img src="sql-injection-column-count.png" alt="Column count " width="600">
+
+</details>
+
 
 ### Step 3: Enumerate the Users Table
 Once the column count and injectable column were confirmed, the query was modified to pull data from the database's users table:
@@ -31,7 +45,7 @@ Once the column count and injectable column were confirmed, the query was modifi
 ```
 
 <details>
-<summary>Screenshot 1: Injection point request (click to view)</summary>
+<summary>Screenshot 3: Injection point request (click to view)</summary>
 
 <img src="sql-injection-point.png" alt="Injection point" width="600">
 
@@ -40,7 +54,7 @@ This returned the contents of the users table — usernames and passwords concat
 
 
 <details>
-<summary>Screenshot 2: Users table returned in response(click to view)</summary>
+<summary>Screenshot 4: Users table returned in response(click to view)</summary>
 
 <img src="sql-injection-response.png" alt="Injection response" width="600">
 
@@ -50,7 +64,7 @@ This returned the contents of the users table — usernames and passwords concat
 Among the retrieved rows was an administrator account along with its password. These credentials were then used to log in to the application's admin portal, confirming full exploitation of the vulnerability.
 
 <details>
-<summary>Screenshot 3: Successful admin login(click to view)</summary>
+<summary>Screenshot 5: Successful admin login(click to view)</summary>
 
 <img src="admin-login-success.png" alt="Admin login sucess" width="600">
 
