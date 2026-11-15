@@ -27,19 +27,33 @@ Using Burp Suite to intercept and modify the request, the number of NULL values 
 Once the column count and injectable column were confirmed, the query was modified to pull data from the database's users table:
 
 ```sql
-' UNION SELECT NULL, username || '~' || password FROM users-- 
+' UNION SELECT NULL, username || '~' || password FROM users--
 ```
 
+<details>
+<summary>Sreenshot 1: Confirming the injection point</summary>
+
+<img src="sql-injection-point.png" alt="Injection point" width="600">
+
+</details>
 This returned the contents of the users table — usernames and passwords concatenated together — within the single vulnerable display column.
+
+<details>
+<summary>Sreenshot 2: Injection response</summary>
+
+<img src="sql-injection-response.png" alt="Injection response" width="600">
+
+</details>
 
 ### Step 4: Extract Credentials and Authenticate
 Among the retrieved rows was an administrator account along with its password. These credentials were then used to log in to the application's admin portal, confirming full exploitation of the vulnerability.
 
-## Proof of Concept
-Screenshots demonstrating each step of the attack are added here.
-- sql-injection-point.png 
-- sql-injection-response.png
-- admin-login-success.png
+<details>
+<summary>Sreenshot 3: Successful admin login</summary>
+
+<img src="admin-login-success.png" alt="Admin login sucess" width="600">
+
+</details>
 
 ## Impact
 This vulnerability allowed an unauthenticated attacker to extract sensitive data from arbitrary database tables, including user credentials, and subsequently gain administrative access to the application.
