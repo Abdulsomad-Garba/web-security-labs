@@ -31,15 +31,16 @@ Once the column count and injectable column were confirmed, the query was modifi
 ```
 
 <details>
-<summary>Sreenshot 1: Confirming the injection point</summary>
+<summary>Screenshot 1: Injection point request (click to view)</summary>
 
 <img src="sql-injection-point.png" alt="Injection point" width="600">
 
 </details>
 This returned the contents of the users table — usernames and passwords concatenated together — within the single vulnerable display column.
 
+
 <details>
-<summary>Sreenshot 2: Injection response</summary>
+<summary>Screenshot 2: Users table returned in response(click to view)</summary>
 
 <img src="sql-injection-response.png" alt="Injection response" width="600">
 
@@ -49,7 +50,7 @@ This returned the contents of the users table — usernames and passwords concat
 Among the retrieved rows was an administrator account along with its password. These credentials were then used to log in to the application's admin portal, confirming full exploitation of the vulnerability.
 
 <details>
-<summary>Sreenshot 3: Successful admin login</summary>
+<summary>Screenshot 3: Successful admin login(click to view)</summary>
 
 <img src="admin-login-success.png" alt="Admin login sucess" width="600">
 
